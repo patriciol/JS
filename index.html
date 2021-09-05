@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,42 +26,41 @@
 
 <body>
 
-    <header class="d-flex flex-md-row flex-row-reverse justify-content-between align-items-center">
+    <header class="d-flex flex-md-row justify-content-between align-items-center">
+
         <h1 class="marca"><a href="">Alas Acuarelas</a></h1>
 
+        <nav class="d-flex">
 
-
-        <nav class="d-none d-md-flex">
             <ul class="listaNav d-flex flex-row">
+
                 <li class="itemLista">
                     <a href="./index.html">TIENDA</a>
                 </li>
+
                 <li class="itemLista">
                     <a href="./carrito.html"><i class="carritoHeader fas fa-cart-plus fa-lg"></i></a>
+                    <div id="cartNumbers">
+                        <span class="fw-bold text-white" id="contadorCarrito">0</span>
+                    </div>
                 </li>
+
             </ul>
         </nav>
 
-        <div class="dropdown d-flex d-md-none">
-            <button class="btn btn-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                &#9776;
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item itemDesplegable" href="./index.html">TIENDA</a></li>
-                <li> <a href="./carrito.html"><i class="carritoHeader fas fa-cart-plus fa-lg"></i></a></li>
-            </ul>
-        </div>
 
     </header>
 
     <main>
+
         <div id="sumar" style="display: none">
             <p> Producto agregado al carrito </p>
         </div>
+
         <div id="restar" style="display: none">
             <p> Producto eliminado del carrito </p>
         </div>
+
         <section class="contenedorCuadros">
 
             <div class="tituloTienda">
@@ -105,9 +105,7 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="./js/index.js"></script>
 
 </body>
-
-
 </html>

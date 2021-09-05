@@ -1,17 +1,33 @@
 /*Declaracion de carrito de compras y verifico si hay informacion en el Storage*/
+
 let carritoDeCompras = [];
 const strCarrito = localStorage.getItem("carrito")
 const carrito = JSON.parse(strCarrito);
+const strCantidadCarrito= localStorage.getItem("cantidadCarrito")
+const cantidadCarrito=JSON.parse(strCantidadCarrito)
 
+/*Incializo el carrito de compras*/
 if (carrito == null) {
   carritoDeCompras = [];
   $(".carritoHeader").css("color", "#fdf0e7")
-
-} else {
+} 
+else{
   carritoDeCompras = carrito;
   $(".carritoHeader").css("color", "green")
+}
+
+/*Incializo el contador de items seleccionados en el carrito*/
+if(cantidadCarrito==null)
+{
+  document.getElementById("contadorCarrito").innerHTML = 0
 
 }
+else
+{
+  document.getElementById("contadorCarrito").innerHTML = cantidadCarrito
+
+}
+
 
 /*Declaracion de mi funcion constructora*/
 
@@ -26,10 +42,9 @@ class ProductoAnadido {
   }
 }
 
-/*Obtnego la etiqueta del html*/
 let container = document.getElementById("container");
 
-/*Declaracion del listado de Productos*/
+
 const listadoProductos = [
   { nombre: "Acuarela Neutral", precio: 500, id: 1, stock: 25, img: "multimedia/tienda5.jpeg", },
   { nombre: "Acuarela Ramitas", precio: 480, id: 2, stock: 50, img: "multimedia/tienda4.jpeg", },
@@ -42,14 +57,10 @@ const listadoProductos = [
   { nombre: "Agenda Campestre", precio: 850, id: 9, stock: 20, img: "multimedia/agenda.jpeg", },
 ]
 
-/*"imprimir" Dinamicamente los productos*/
-
 tiendaDinamica(listadoProductos);
 
 
 function tiendaDinamica(productsArray) {
-
-/*Borro todos los productos que existan en el html*/
 
   let cell = document.getElementById("container");
 
@@ -61,7 +72,6 @@ function tiendaDinamica(productsArray) {
 
   productsArray.forEach((product) => {
 
-  /*Declaracion de las etiquetas de la tienda dinmica*/
     let div = document.createElement("div");
     div.setAttribute("class", "cuadro");
 
@@ -111,10 +121,14 @@ function tiendaDinamica(productsArray) {
 
       localStorage.setItem("carrito", JSON.stringify(carritoDeCompras))
 
+      document.getElementById("contadorCarrito").innerHTML =  parseInt(contadorCarrito.innerHTML)+1
+      localStorage.setItem("cantidadCarrito", JSON.stringify(contadorCarrito.innerHTML))
+
+
       $("#sumar").fadeIn("slow", function () { $("#sumar").fadeOut(1000) })
 
-      /*Una vez agregado el primer producto se genera un boton de sumar otro de restar y el input de cantidades*/
 
+      /*Una vez agregado el primer producto se genera un boton de sumar otro de restar y el input de cantidades*/
       button.parentNode.removeChild(button)
 
       let contendorBotones = document.createElement("div")
@@ -144,7 +158,8 @@ function tiendaDinamica(productsArray) {
         if (cantidad < aux[0].stock) {
           cantidad++
           $("#sumar").fadeIn("slow", function () { $("#sumar").fadeOut(1000) })
-
+          document.getElementById("contadorCarrito").innerHTML = parseInt(contadorCarrito.innerHTML)+1
+          localStorage.setItem("cantidadCarrito", JSON.stringify(contadorCarrito.innerHTML))
         }
         else {
           swal("No hay stock :(", "Disculpe las molestias", "info");
@@ -170,6 +185,10 @@ function tiendaDinamica(productsArray) {
         if (cantidad != 0) {
           cantidad--
           $("#restar").fadeIn("slow", function () { $("#restar").fadeOut(1000) })
+          document.getElementById("contadorCarrito").innerHTML = parseInt(contadorCarrito.innerHTML)-1
+          localStorage.setItem("cantidadCarrito", JSON.stringify(contadorCarrito.innerHTML))
+
+
         }
 
         else {
@@ -184,11 +203,8 @@ function tiendaDinamica(productsArray) {
         carritoDeCompras[auxPos].subtotal = cantidad * carritoDeCompras[auxPos].precio;
 
         localStorage.setItem("carrito", JSON.stringify(carritoDeCompras))
-
       }
-
     }
-
     );
 
     container.appendChild(div);
@@ -209,8 +225,6 @@ function busqueda() {
     if(productosTemp.length===0)
     {
       $("#container").append(`<p></p><p class='msjBusqueda'>No encontramos resultados para "${palabra}" </p>`)
-  
     }
-
   }
 }

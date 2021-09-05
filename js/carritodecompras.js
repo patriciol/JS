@@ -3,6 +3,18 @@ window.onload = function () {
 	const strCarrito = localStorage.getItem("carrito")
 	const carrito = JSON.parse(strCarrito);
 
+	const strCantidadCarrito = localStorage.getItem("cantidadCarrito")
+	const cantidadCarrito = JSON.parse(strCantidadCarrito)
+
+	if (cantidadCarrito == null) {
+		document.getElementById("contadorCarrito").innerHTML = 0
+
+	}
+	else {
+		document.getElementById("contadorCarrito").innerHTML = cantidadCarrito
+
+	}
+
 	let html;
 	if (carrito == null) {
 		html = "<p class='msjCarrito'>No hay productos en el carrito</p>"
@@ -21,8 +33,7 @@ window.onload = function () {
 
 
 
-	//Declaramos la url que vamos a usar para el POST
-	const URLGET = "https://jsonplaceholder.typicode.com/posts"
+	const URLPOST = "https://jsonplaceholder.typicode.com/posts"
 
 	$("#realizarCompra").click(() => {
 
@@ -34,27 +45,26 @@ window.onload = function () {
 		else {
 
 			/*Realizo un post ficticio, en caso de obtener "success" se realiza correctamente la compra*/
-			$.post(URLGET, carrito, (respuesta, estado) => {
+			$.post(URLPOST, carrito, (respuesta, estado) => {
 				if (estado === "success") {
-					  swal({
+					swal({
 						title: "Quiere realizar la compra?",
 						icon: "info",
-						buttons: {cancel:"Cancelar", SI:true}
-					  })
-					  .then(()=> {
+						buttons: { cancel: "NO", SI: "SI" }
+					})
+						.then((willDelete) => {
 
-						if(true)
-						{
-							swal("Compra Realizada Correctamente!", "Muchas Gracias!", "success")
-							.then(() => {
-								localStorage.clear();
-								location.reload();;
-							})
-	
-						}
-						
-					  })
-				
+							if (willDelete) {
+								swal("Compra Realizada Correctamente!", "Muchas Gracias!", "success")
+									.then(() => {
+										localStorage.clear();
+										location.reload();;
+									})
+
+							}
+
+						})
+
 				}
 			});
 		}
@@ -69,12 +79,17 @@ function generarHTMLCarrito(objeto) {
 	let html = "<table class='table'><tr><td>Nombre</td><td>Producto</td><td>Precio</td><td>Cantidad</td></tr>";
 
 	objeto.forEach(prod => {
-		html += `<tr>
+
+		if (prod.cantidad != 0) 
+		{
+			html += `<tr>
 		                <td>${prod.nombre}</td> 
 		                <td><img src="./${prod.img}" widht="100" height="100"></td> 
                         <td>${prod.precio} $</td> 
 		                <td>${prod.cantidad}</td> 
 		              </tr>`
+
+		}
 	})
 	html += "</table>"
 	html += `<h2 class="total"> Total: ${totalCarrito}$</h2>`
@@ -89,19 +104,18 @@ limpiar.onclick = () => {
 		icon: "warning",
 		buttons: true,
 		dangerMode: true,
-	  })
-	  .then((willDelete) => {
-		if (willDelete) {
-		  swal("Carrito de compras vacio", {
-			icon: "success",
-		  })
-		  .then(() => {
-			localStorage.clear();
-			location.reload();
+	})
+		.then((willDelete) => {
+			if (willDelete) {
+				swal("Carrito de compras vacio", {
+					icon: "success",
+				})
+					.then(() => {
+						localStorage.clear();
+						location.reload();
+					})
+			}
 		})
-		}
-	  })
-
 }
 
 
