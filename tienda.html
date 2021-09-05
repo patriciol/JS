@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alas Acuarelas - Tienda</title>
+
+    <!-- Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!--Estilo CSS Propio-->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/ca82ccea97.js" crossorigin="anonymous"></script>
+
+    <!--Font GoogleFont-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="d-flex flex-md-row flex-row-reverse justify-content-between align-items-center">
+        <h1 class="marca"><a href="">Alas Acuarelas</a></h1>
+
+        <nav class="d-none d-md-flex">
+            <ul class="listaNav d-flex flex-row">
+                <li class="itemLista">
+                    <a href="./tienda.html">TIENDA</a>
+                </li>
+                <li class="itemLista">
+                    <a href="./carrito.html"><i class="carritoHeader fas fa-cart-plus fa-lg"></i></a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        <div id="sumar" style="display: none">
+            <p> Producto agregado al carrito </p>
+        </div>
+        <div id="restar" style="display: none">
+            <p> Producto eliminado del carrito </p>
+        </div>
+        <section class="contenedorCuadros">
+
+            <div class="tituloTienda">
+                <h2>TIENDA</h2>
+                <h5>Acuarelas - Señaladores - Agendas</h5>
+                <input onkeyup="busqueda();" type="text" id="buscador">
+                <button onclick="busqueda();" class="boton3">Buscar</button>
+            </div>
+
+            <div class="seccionCuadros" id="container">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="d-flex flex-md-row flex-column justify-content-md-between justify-content-center align-items-center">
+
+        <div>
+            <ul>
+                <li>Alas Acuarelas
+                    <ul>
+                        <li class="listaLocales">Local Pipe I - Thames 747 </li>
+                        <li class="listaLocales">Local Pipe II - Cabildo y Juramento</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="rrss">
+            <p class="item">Seguinos en</p>
+            <a href="https://www.instagram.com/alasacuarelas/" target="_blank"><i
+                    class="fab fa-instagram fa-2x color"></i></a>
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./index.js"></script>
+
+</body>
+
+
+</html>
