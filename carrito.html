@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alas Acuarelas - Tienda</title>
+
+    <title>Alas Acuarelas - Carrito</title>
 
     <!-- Bootstrap CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -26,10 +27,13 @@
 <body>
 
     <header class="d-flex flex-md-row flex-row-reverse justify-content-between align-items-center">
+
         <h1 class="marca"><a href="">Alas Acuarelas</a></h1>
 
         <nav class="d-none d-md-flex">
+
             <ul class="listaNav d-flex flex-row">
+
                 <li class="itemLista">
                     <a href="./index.html">TIENDA</a>
                 </li>
@@ -42,26 +46,16 @@
     </header>
 
     <main>
-        <div id="sumar" style="display: none">
-            <p> Producto agregado al carrito </p>
+
+        <div id="carritoTotal">
+
         </div>
-        <div id="restar" style="display: none">
-            <p> Producto eliminado del carrito </p>
+        <div id="contenedorBotones">
+            <button id="seguirCompra" class="botonSeguir"><a class="volver" href="./tienda.html">Seguir
+                    Comprando</a></button>
+            <button id="limpiarCarrito" class="botonVaciar">Vaciar Carrito</button>
+            <button id="realizarCompra" class="botonComprar"> Realizar Comprar</button>
         </div>
-        <section class="contenedorCuadros">
-
-            <div class="tituloTienda">
-                <h2>TIENDA</h2>
-                <h5>Acuarelas - Señaladores - Agendas</h5>
-                <input onkeyup="busqueda();" type="text" id="buscador">
-                <button onclick="busqueda();" class="boton3">Buscar</button>
-            </div>
-
-            <div class="seccionCuadros" id="container">
-
-            </div>
-
-        </section>
 
     </main>
 
@@ -92,7 +86,7 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="./carritodecompras.js"></script>
 
 </body>
 
